@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exam Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Explanation</th>
+      <th>Exam</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exam_questions.each do |exam_question| %>
+      <tr>
+        <td><%= exam_question.title %></td>
+        <td><%= exam_question.body %></td>
+        <td><%= exam_question.explanation %></td>
+        <td><%= exam_question.exam_id %></td>
+        <td><%= link_to 'Show', exam_question %></td>
+        <td><%= link_to 'Edit', edit_exam_question_path(exam_question) %></td>
+        <td><%= link_to 'Destroy', exam_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exam Question', new_exam_question_path %>

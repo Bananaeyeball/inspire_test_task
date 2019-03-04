@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @preparation_test.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @preparation_test.body %>
+</p>
+
+<p>
+  <strong>Hint:</strong>
+  <%= @preparation_test.hint %>
+</p>
+
+<p>
+  <strong>Use count:</strong>
+  <%= @preparation_test.use_count %>
+</p>
+
+<%= link_to 'Edit', edit_preparation_test_path(@preparation_test) %> |
+<%= link_to 'Back', preparation_tests_path %>

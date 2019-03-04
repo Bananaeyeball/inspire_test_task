@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @preparation_question.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @preparation_question.body %>
+</p>
+
+<p>
+  <strong>Hint:</strong>
+  <%= @preparation_question.hint %>
+</p>
+
+<p>
+  <strong>Use count:</strong>
+  <%= @preparation_question.use_count %>
+</p>
+
+<%= link_to 'Edit', edit_preparation_question_path(@preparation_question) %> |
+<%= link_to 'Back', preparation_questions_path %>

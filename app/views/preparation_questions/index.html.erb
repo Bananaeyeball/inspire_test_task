@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Preparation Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Hint</th>
+      <th>Use count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @preparation_questions.each do |preparation_question| %>
+      <tr>
+        <td><%= preparation_question.title %></td>
+        <td><%= preparation_question.body %></td>
+        <td><%= preparation_question.hint %></td>
+        <td><%= preparation_question.use_count %></td>
+        <td><%= link_to 'Show', preparation_question %></td>
+        <td><%= link_to 'Edit', edit_preparation_question_path(preparation_question) %></td>
+        <td><%= link_to 'Destroy', preparation_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Preparation Question', new_preparation_question_path %>
