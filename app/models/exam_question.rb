@@ -8,7 +8,6 @@ class ExamQuestion < ApplicationRecord
   scope :unassigned, -> { where(exam_id: nil) }
 
   def reshuffle_all_tests
-    require 'pry'; binding.pry
     Exam.all.each do |exam|
       exam.questions.clear
       AddQuestionsToTestService.call(exam)
