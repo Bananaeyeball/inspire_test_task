@@ -1,6 +1,4 @@
 class ExamQuestionsController < ApplicationController
-  before_action :set_exam_question, only: [:show, :edit, :update, :destroy]
-
   # GET /exam_questions
   # GET /exam_questions.json
   def index
@@ -27,12 +25,12 @@ class ExamQuestionsController < ApplicationController
     @exam_question = ExamQuestion.new(exam_question_params)
 
     respond_to do |format|
-      if @exam_question.save
-        format.html { redirect_to @exam_question, notice: 'Exam question was successfully created.' }
-        format.json { render :show, status: :created, location: @exam_question }
+      if exam_question.save
+        format.html { redirect_to exam_question, notice: 'Exam question was successfully created.' }
+        format.json { render :show, status: :created, location: exam_question }
       else
         format.html { render :new }
-        format.json { render json: @exam_question.errors, status: :unprocessable_entity }
+        format.json { render json: exam_question.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +39,12 @@ class ExamQuestionsController < ApplicationController
   # PATCH/PUT /exam_questions/1.json
   def update
     respond_to do |format|
-      if @exam_question.update(exam_question_params)
-        format.html { redirect_to @exam_question, notice: 'Exam question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @exam_question }
+      if exam_question.update(exam_question_params)
+        format.html { redirect_to exam_question, notice: 'Exam question was successfully updated.' }
+        format.json { render :show, status: :ok, location: exam_question }
       else
         format.html { render :edit }
-        format.json { render json: @exam_question.errors, status: :unprocessable_entity }
+        format.json { render json: exam_question.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +52,7 @@ class ExamQuestionsController < ApplicationController
   # DELETE /exam_questions/1
   # DELETE /exam_questions/1.json
   def destroy
-    @exam_question.destroy
+    exam_question.destroy
     respond_to do |format|
       format.html { redirect_to exam_questions_url, notice: 'Exam question was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,12 +61,13 @@ class ExamQuestionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_exam_question
-      @exam_question = ExamQuestion.find(params[:id])
+    def exam_question
+      @exam_question ||= ExamQuestion.find(params[:id])
     end
+    helper_method :exam_question
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_question_params
-      params.require(:exam_question).permit(:title, :body, :explanation, :exam_id)
+      params.require(:exam_question).permit(:title, :body, :explanation)
     end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InspireTestTask</title>
+    <title>Tests App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+        <% flash.each do |name, msg| %>
+            <%= content_tag(:div, msg, class: "alert alert-info") %>
+        <% end %>
+        <%= yield %>
+    </div>
   </body>
 </html>

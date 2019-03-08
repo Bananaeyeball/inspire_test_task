@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        exam:
+          attributes:
+            base:
+              questions_should_be_present: 'There are not enough questions for the exam. Please create %{count} more'
+        preparation_test:
+          attributes:
+            base:
+              questions_should_be_present: 'There are not enough questions for the preparation test. Please create %{count} more'

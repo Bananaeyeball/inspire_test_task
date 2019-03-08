@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'home#index'
+  resources :questions, only: [:index]
   resources :exam_questions
   resources :preparation_questions
   resources :exams

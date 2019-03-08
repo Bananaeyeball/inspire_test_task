@@ -4,49 +4,49 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    @preparation_tests = PreparationTest.all
   end
 
-  # GET /tests/1
-  # GET /tests/1.json
+  # GET /preparation_tests/1
+  # GET /preparation_tests/1.json
   def show
   end
 
-  # GET /tests/new
+  # GET /preparation_tests/new
   def new
-    @test = Test.new
+    @preparation_test = PreparationTest.new
   end
 
-  # GET /tests/1/edit
+  # GET /preparation_tests/1/edit
   def edit
   end
 
   # POST /tests
   # POST /tests.json
   def create
-    @test = Test.new(test_params)
+    @preparation_test = CreatePreparationTestService.call(exam_params)
 
     respond_to do |format|
-      if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
-        format.json { render :show, status: :created, location: @test }
+      if @preparation_test.save
+        format.html { redirect_to @preparation_test, notice: 'Test was successfully created.' }
+        format.json { render :show, status: :created, location: @preparation_test }
       else
         format.html { render :new }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
+        format.json { render json: @preparation_test.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /tests/1
-  # PATCH/PUT /tests/1.json
+  # PATCH/PUT /preparation_tests/1
+  # PATCH/PUT /preparation_tests/1.json
   def update
     respond_to do |format|
-      if @test.update(test_params)
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test }
+      if @preparation_test.update(test_params)
+        format.html { redirect_to @preparation_test, notice: 'Test was successfully updated.' }
+        format.json { render :show, status: :ok, location: @preparation_test }
       else
         format.html { render :edit }
-        format.json { render json: @test.errors, status: :unprocessable_entity }
+        format.json { render json: @preparation_test.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +64,7 @@ class TestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
-      @test = Test.find(params[:id])
+      @test = PreparationTest.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

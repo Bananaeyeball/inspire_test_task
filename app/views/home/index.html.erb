@@ -1,24 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>All tests here</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tests.each do |test| %>
-      <tr>
-        <td><%= test.name %></td>
-        <td><%= test.type %></td>
-        <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', public_send("edit_#{test.type}_path", test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='container text-center'>
+  <% @tests.each do |test| %>
+    <div class="row">
+    <div class="col-sm-6 col-md-4">
+        <%= link_to test.name, test %>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <%= link_to test.type, public_send("new_#{test.type}_path") %>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <%= link_to 'Delete', test, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    </div>
+  <% end %>
+</div>

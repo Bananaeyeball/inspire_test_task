@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All tests here</h1>
+
+<h2><%= link_to 'Tests', root_path %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.body %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', public_send("edit_#{question.type}_path", question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

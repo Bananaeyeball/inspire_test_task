@@ -9,12 +9,12 @@ class ShuffleQuestionsService
   attr_reader :type
 
   def call
-    question_type.
+    question_shuffler_class.call
   end
 
   private
 
-  def question_class
-    type + '_question'
+  def question_shuffler_class
+    type + '_question_shuffler'.camelize.constantize
   end
 end
