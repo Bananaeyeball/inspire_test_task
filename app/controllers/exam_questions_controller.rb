@@ -1,10 +1,4 @@
 class ExamQuestionsController < ApplicationController
-  # GET /exam_questions
-  # GET /exam_questions.json
-  def index
-    @exam_questions = ExamQuestion.all
-  end
-
   # GET /exam_questions/1
   # GET /exam_questions/1.json
   def show
@@ -26,7 +20,7 @@ class ExamQuestionsController < ApplicationController
 
     respond_to do |format|
       if exam_question.save
-        format.html { redirect_to exam_question, notice: 'Exam question was successfully created.' }
+        format.html { redirect_to questions_path, notice: 'Exam question was successfully created.' }
         format.json { render :show, status: :created, location: exam_question }
       else
         format.html { render :new }
@@ -54,7 +48,7 @@ class ExamQuestionsController < ApplicationController
   def destroy
     exam_question.destroy
     respond_to do |format|
-      format.html { redirect_to exam_questions_url, notice: 'Exam question was successfully destroyed.' }
+      format.html { redirect_to questions_path, notice: 'Exam question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

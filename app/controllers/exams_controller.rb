@@ -1,10 +1,4 @@
 class ExamsController < ApplicationController
-  # GET /exams
-  # GET /exams.json
-  def index
-    @exams = Exam.all
-  end
-
   # GET /exams/1
   # GET /exams/1.json
   def show
@@ -54,7 +48,7 @@ class ExamsController < ApplicationController
   def destroy
     exam.destroy
     respond_to do |format|
-      format.html { redirect_to exams_url, notice: 'Exam was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Exam was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

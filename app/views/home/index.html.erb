@@ -1,15 +1,30 @@
 <div class='container text-center'>
-  <% @tests.each do |test| %>
+  <% if @tests.blank? %>
     <div class="row">
-    <div class="col-sm-6 col-md-4">
-        <%= link_to test.name, test %>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <%= link_to test.type, public_send("new_#{test.type}_path") %>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <%= link_to 'Delete', test, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+     <p class="text-center">There are no tests yet. Feel free to create one!</p>
     </div>
   <% end %>
+
+  <% @tests.each do |test| %>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <%= link_to test.name, test %>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <%= link_to test.type, public_send("new_#{test.type}_path") %>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <%= link_to 'Delete', test, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class="col-3">
+      <%= link_to 'Create new preparation test', new_preparation_test_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-3">
+      <%= link_to 'Create new exam', new_exam_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>

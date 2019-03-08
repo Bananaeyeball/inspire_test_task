@@ -10,8 +10,10 @@ class CreateExamService
   end
 
   def call
-    exam = Exam.create(params)
-    AddQuestionsToTestService.call(exam) if exam.errors.blank?
+    exam = ActiveRecord::Base.transaction do
+      exam = Exam.create(params)
+      AddQuestionsToTestService.call(exam)
+    end
     exam
   end
 end

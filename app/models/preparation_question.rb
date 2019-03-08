@@ -3,7 +3,7 @@ class PreparationQuestion < ApplicationRecord
 
   validates :title, :body, presence: true, uniqueness: true
 
-  before_create :reshuffle_all_tests
+  after_create :reshuffle_all_tests
 
   def add_use_count
     update(use_count: use_count + 1)

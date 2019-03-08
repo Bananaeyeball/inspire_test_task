@@ -1,27 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class='container text-center'>
+  <% if @questions.blank? %>
+    <div class="row">
+      <p class="text-center">There are no questions yet. You need to create at least 5 in order to create a test<p>
+    </div>
+  <% end %>
 
-<h1>All tests here</h1>
+  <% @questions.each do |question| %>
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <p class='text-center'><%= link_to question.title, question %></p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class='text-center'><%= question.body%></p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class='text-center'><%= question.explanation_field %></p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
 
-<h2><%= link_to 'Tests', root_path %></h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.body %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', public_send("edit_#{question.type}_path", question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class='row'>
+    <div class="col-3">
+      <%= link_to 'New preparation question', new_preparation_question_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-3">
+      <%= link_to 'New exam question', new_exam_question_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

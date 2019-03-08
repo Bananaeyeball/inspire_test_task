@@ -1,9 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center"><%= exam.name %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= exam.name %>
-</p>
+  <div class="row">
+    <div class='col-12 text-center'>
+      <% exam.questions.each_with_index do |question, index| %>
+        <div class="row">
+          <div class="col-3">
+            <%= index + 1 %>
+          </div>
+          <div class="col-3">
+            <%= link_to question.title, question %>
+          </div>
+          <div class="col-3">
+            <%= question.body %>
+          </div>
+          <div class="col-3">
+            <%= question.explanation %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_exam_path(exam) %> |
-<%= link_to 'Back', root_path %>
+  <div class="row">
+    <div class='col-12 text-center'>
+      <%= link_to 'Edit', edit_exam_path(exam), class: 'btn btn-primary' %>
+      <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

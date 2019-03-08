@@ -1,12 +1,4 @@
 class PreparationQuestionsController < ApplicationController
-  before_action :set_preparation_question, only: [:show, :edit, :update, :destroy]
-
-  # GET /preparation_questions
-  # GET /preparation_questions.json
-  def index
-    @preparation_questions = PreparationQuestion.all
-  end
-
   # GET /preparation_questions/1
   # GET /preparation_questions/1.json
   def show
@@ -28,7 +20,7 @@ class PreparationQuestionsController < ApplicationController
 
     respond_to do |format|
       if preparation_question.save
-        format.html { redirect_to preparation_question, notice: 'Preparation question was successfully created.' }
+        format.html { redirect_to questions_path, notice: 'Preparation question was successfully created.' }
         format.json { render :show, status: :created, location: preparation_question }
       else
         format.html { render :new }
@@ -56,7 +48,7 @@ class PreparationQuestionsController < ApplicationController
   def destroy
     preparation_question.destroy
     respond_to do |format|
-      format.html { redirect_to preparation_questions_url, notice: 'Preparation question was successfully destroyed.' }
+      format.html { redirect_to questions_path, notice: 'Preparation question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

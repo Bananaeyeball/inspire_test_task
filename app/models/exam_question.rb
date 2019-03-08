@@ -3,11 +3,12 @@ class ExamQuestion < ApplicationRecord
 
   validates :title, :body, presence: true, uniqueness: true
 
-  before_save :reshuffle_all_tests
+  after_create :reshuffle_all_tests
 
   scope :unassigned, -> { where(exam_id: nil) }
 
   def reshuffle_all_tests
+    require 'pry'; binding.pry
     Exam.all.each do |exam|
       exam.questions.clear
       AddQuestionsToTestService.call(exam)

@@ -6,6 +6,7 @@ class ShuffleQuestionsService
   def initialize(type)
     @type = type
   end
+
   attr_reader :type
 
   def call
@@ -15,6 +16,6 @@ class ShuffleQuestionsService
   private
 
   def question_shuffler_class
-    type + '_question_shuffler'.camelize.constantize
+    (type + '_question_shuffler').camelize.constantize
   end
 end

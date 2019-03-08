@@ -15,4 +15,8 @@ class QuestionPresenter
   def type
     question.class.to_s.underscore
   end
+
+  def explanation_field
+    type == 'exam_question' ? explanation : hint
+  end
 end

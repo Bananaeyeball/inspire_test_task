@@ -1,32 +1,8 @@
-<%= form_with(model: exam_question, local: true) do |form| %>
-  <% if exam_question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(exam_question.errors.count, "error") %> prohibited this exam_question from being saved:</h2>
+<%= simple_form_for exam_question, defaults: { input_html: { class: 'default_class' } } do |f| %>
+  <%= render 'shared/error_messages', object: f.object  %>
 
-      <ul>
-      <% exam_question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :explanation %>
-    <%= form.text_area :explanation %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.input :title, input_html: { class: 'special'  } %>
+  <%= f.input :body, input_html: { class: 'special'  } %>
+  <%= f.input :explanation %>
+  <%= f.button :submit, class: "btn btn-success" %>
 <% end %>

@@ -1,24 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center"><%= preparation_test.name %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @preparation_test.title %>
-</p>
+  <div class="row">
+    <div class='col-12 text-center'>
+      <% preparation_test.questions.each_with_index do |question, index| %>
+        <div class="row">
+          <div class="col-3">
+            <%= index + 1 %>
+          </div>
+          <div class="col-3">
+            <%= link_to question.title, question %>
+          </div>
+          <div class="col-3">
+            <%= question.body %>
+          </div>
+          <div class="col-3">
+            <%= question.hint %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @preparation_test.body %>
-</p>
-
-<p>
-  <strong>Hint:</strong>
-  <%= @preparation_test.hint %>
-</p>
-
-<p>
-  <strong>Use count:</strong>
-  <%= @preparation_test.use_count %>
-</p>
-
-<%= link_to 'Edit', edit_preparation_test_path(@preparation_test) %> |
-<%= link_to 'Back', preparation_tests_path %>
+  <div class="row">
+    <div class='col-12 text-center'>
+      <%= link_to 'Edit', edit_preparation_test_path(preparation_test), class: 'btn btn-primary' %>
+      <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

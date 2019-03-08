@@ -1,11 +1,11 @@
 class PreparationQuestionShuffler
-  def call
+  def self.call
     new.call
   end
 
   def call
     lower_count_questions = []
-    (min_use_count..max_use_count).each do |count|
+    counters_array.each do |count|
       if lower_count_questions.count >= 5
         return lower_count_questions.reverse.pop(5)
       elsif (grouped_question_hash[count] + lower_count_questions).count < 5
@@ -17,8 +17,14 @@ class PreparationQuestionShuffler
     end
   end
 
+  private
+
   def grouped_question_hash
     @grouped_hash ||= PreparationQuestion.all.group_by(&:use_count)
+  end
+
+  def counters_array
+    grouped_question_hash.keys.sort
   end
 
   def min_use_count
